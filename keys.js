@@ -1,4 +1,4 @@
-console.log("This is logged")
+// console.log("This is logged")
 
 exports.twitter = {
   consumer_key: process.env.TWITTER_CONSUMER_KEY,

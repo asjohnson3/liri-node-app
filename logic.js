@@ -33,25 +33,16 @@ if (selector === "my-tumblr"){
      for (var i = 0; i< postsNum.length; i++){
          var post = response.posts[i].slug
          var num = i+1;
+        console.log(" --------------------------------------------------------------------- ");
         console.log("Post " + num + ": " + post);
+        console.log(" --------------------------------------------------------------------- ");
      }
       
     });
-     
-    // var user = new tumblr.User(oauth);
-     
-    // user.info(function(error, response) {
-    //   if (error) {
-    //     throw new Error(error);
-    //   }
-    //   console.log(response);
-    //  console.log(response.user.blogs);
-    //   console.log(response.user.blogs[0].posts);
-    // });
 
 }else if (selector === "spotify-this-song"){
 
-    var Spotify = require('node-spotify-api');
+    // var Spotify = require('node-spotify-api');
      
     spotify.search({ type: 'track', query: operation, limit: 1 }, function(err, data) {
       if (err) {
@@ -86,7 +77,7 @@ var movieName = operation;
     // Then run a request to the OMDB API with the movie specified
     request("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy", function(error, response, body) {
         var data = JSON.parse(body);
-    console.log(data);
+    // console.log(data); 
       // If the request is successful (i.e. if the response status code is 200)
       if (!error && response.statusCode === 200) {
     
@@ -127,24 +118,19 @@ var movieName = operation;
         data = data.split(",");
         var song = data[1];
 
-        var Spotify = require('node-spotify-api');
-    
-        var spotify = new Spotify({
-        id: exports.spotify.id,
-        secret: exports.spotify.secret
-        });
-        
+        // var Spotify = require('node-spotify-api');
+     
         spotify.search({ type: 'track', query: song, limit: 1 }, function(err, data) {
-        if (err) {
+          if (err) {
             return console.log('Error occurred: ' + err);
-        }
+          }
         
-        var artists = data.tracks.items[0].album.artists[0].name;
-        var song = data.tracks.items[0].name;
-        var album = data.tracks.items[0].album.name;
-        var link = data.tracks.items[0].preview_url;
+          var artists = data.tracks.items[0].album.artists[0].name;
+          var song = data.tracks.items[0].name;
+          var album = data.tracks.items[0].album.name;
+          var link = data.tracks.items[0].preview_url;
         
-        // console.log(data.tracks.items[0]);
+        // console.log(data.tracks.items[0]); 
         console.log(" --------------------------------------------------------------------- ");
         console.log("Spotify Information: ")
         console.log("Song: " + song);
@@ -153,7 +139,7 @@ var movieName = operation;
         console.log("Link: " + link);
         console.log(" --------------------------------------------------------------------- ");
         });
-
+    
     });
 
 
